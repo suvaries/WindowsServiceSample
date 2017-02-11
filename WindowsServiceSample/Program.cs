@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration.Install;
+using System.IO;
 
 namespace WindowsServiceSample
 {
@@ -10,6 +7,23 @@ namespace WindowsServiceSample
     {
         static void Main(string[] args)
         {
+            string exePath = "AaSampleService.exe";
+            string serviceDirectory = @"c:\adayazilim\services";
+
+            if(!Directory.Exists(serviceDirectory))
+            {
+                Directory.CreateDirectory(serviceDirectory);
+            }
+
+            string servicePath = Path.Combine(serviceDirectory, exePath);
+
+            File.Copy(exePath, servicePath);
+
+            AssemblyInstaller installer = new AssemblyInstaller();
+            installer.UseNewContext = true;
+            installer.Path = servicePath;
+            installer.Install(null);
+            installer.Commit(null);
         }
     }
 }

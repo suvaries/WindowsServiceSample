@@ -11,7 +11,6 @@ namespace AaSampleService
         {
             InitializeComponent();
         }
-
         
         protected override void OnStart(string[] args)
         {
