@@ -1,7 +1,7 @@
 ﻿using System.Configuration.Install;
 using System.IO;
 
-namespace WindowsServiceSample
+namespace ServiceInstaller
 {
     class Program
     {
